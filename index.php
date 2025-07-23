@@ -3,19 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>En Construcción - Interfaz Moderna</title>
+    <title>Sitio en Construcción</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
-        /* Importa la fuente Poppins desde Google Fonts para un estilo moderno */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
-        :root {
-            --primary-color: #6a82fb;
-            --secondary-color: #764ba2;
-            --text-color: #ffffff;
-            --container-bg: rgba(0, 0, 0, 0.25);
-            --border-color: rgba(255, 255, 255, 0.2);
-        }
-
+        /* --- Estilos Generales --- */
         body, html {
             height: 100%;
             margin: 0;
@@ -24,144 +19,121 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            /* Fondo con gradiente dinámico y animado */
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            background-size: 200% 200%;
-            animation: gradientAnimation 10s ease infinite;
-            color: var(--text-color);
+            /* Fondo con gradiente dinámico */
+            background: linear-gradient(-45deg, #667eea, #764ba2, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
             overflow: hidden;
         }
 
+        /* Animación para el fondo */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* --- Contenedor Principal --- */
         .main-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 20px;
-            animation: fadeIn 1.5s ease-out forwards;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .content-box {
+        /* --- Caja de Texto --- */
+        .text-box {
             max-width: 650px;
-            padding: 40px;
-            background: var(--container-bg);
-            border-radius: 20px;
-            /* Efecto de vidrio esmerilado para un look moderno */
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            padding: 30px 40px;
+            background: rgba(0, 0, 0, 0.25); /* Un poco más oscuro para mejor contraste */
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             margin-bottom: 40px;
         }
 
         h1 {
-            font-size: clamp(2rem, 5vw, 2.8rem); /* Tipografía responsiva */
-            font-weight: 700;
-            margin-bottom: 0.5em;
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin: 0 0 15px 0;
             letter-spacing: 1px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         p {
-            font-size: clamp(1rem, 2.5vw, 1.2rem); /* Tipografía responsiva */
+            font-size: 1.2rem;
             font-weight: 300;
-            line-height: 1.7;
-            max-width: 500px;
-            margin: 0 auto 1.5em auto;
+            line-height: 1.6;
+            margin: 0;
         }
         
-        .highlight {
-            font-weight: 600;
-            color: #f0f0f0;
-        }
-
-        /* --- Efecto Interactivo del Logo --- */
+        /* --- Logo Interactivo --- */
         .logo-container {
             position: relative;
-            width: 200px; /* Ancho del logo */
-            height: 200px; /* Alto del logo (ajustar si es necesario) */
+            width: 200px; /* Ajusta el tamaño si es necesario */
             cursor: pointer;
-            border-radius: 50%; /* Contenedor circular */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 25px rgba(0,0,0,0.4);
-            transition: transform 0.4s ease;
+            overflow: hidden; /* Esencial para el efecto de escaneo */
+            border-radius: 8px; /* Opcional: para redondear el efecto */
         }
 
-        #logo-hv {
+        .logo-container img {
             display: block;
             width: 100%;
             height: auto;
-            border-radius: 50%; /* Hace la imagen circular */
         }
         
-        /* Máscara para el efecto de construcción */
+        /* Efecto de escaneo al pasar el ratón */
         .logo-container::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
+            left: -100%; /* Inicia fuera de la vista a la izquierda */
             width: 100%;
             height: 100%;
-            background: var(--secondary-color);
-            border-radius: 50%;
-            transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
-            transform: scale(1);
+            background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+            transition: left 0.6s ease-in-out; /* Velocidad de la animación */
         }
 
-        /* Animación al pasar el cursor */
         .logo-container:hover::before {
-            transform: scale(0); /* La máscara se encoge para revelar el logo */
-        }
-        
-        .logo-container:hover {
-            transform: scale(1.05); /* El contenedor se agranda un poco */
+            left: 100%; /* Mueve el efecto a través de la imagen */
         }
 
+        /* --- Footer --- */
         .footer {
-            margin-top: 30px;
-            font-weight: 400;
+            position: absolute;
+            bottom: 20px;
             font-size: 0.9rem;
-            opacity: 0.7;
-        }
-
-        /* --- Animaciones --- */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
         }
     </style>
 </head>
 <body>
 
     <div class="main-container">
-        <div class="content-box">
-            <h1>¡Estamos construyendo algo increíble! 🚀</h1>
-            <p>Nuestra nueva plataforma está en fase de implementación para ofrecerte una experiencia superior. La espera valdrá la pena.</p>
-            <p class="highlight">¡Regresa pronto!</p>
+        
+        <div class="text-box">
+            <h1>🛠️ Estamos en Construcción 🛠️</h1>
+            <p>Trabajamos para traerte una nueva y espectacular interfaz. ¡La espera valdrá la pena!</p>
         </div>
 
-        <div class="logo-container" title="Asociación HV Educativa">
-            <!-- Asegúrate de que la ruta a tu imagen sea correcta -->
-            <img id="logo-hv" src="image/logo-hv.png" alt="Logo HV Educativa">
+        <div class="logo-container" title="Construyendo el futuro">
+            <img src="image/logo-hv.png" alt="Logo de la Asociación HV Educativa">
         </div>
 
-        <div class="footer">
-            <p>&copy; <?php echo date("Y"); ?> Asociación HV Educativa. Todos los derechos reservados.</p>
-        </div>
+    </div>
+
+    <div class="footer">
+        &copy; <?php echo date("Y"); ?> Asociación HV Educativa. Todos los derechos reservados.
     </div>
 
 </body>
