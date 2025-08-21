@@ -1,0 +1,10 @@
+[
+    {
+        "id": "1",
+        "username": "admin",
+        "name": "Administrador",
+        "password": "$2y$10$q7Ki6a8ZtoDMYjvg6aa1HuS.YaWm52QCogAuUVR1av48RssN3k73m",
+        "failed_attempts": 0,
+        "lock_until": null
+    }
+]

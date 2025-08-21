@@ -130,6 +130,11 @@
             <img src="image/logo-hv.png" alt="Logo de la Asociación HV Educativa">
         </div>
 
+        <!-- Botón Intranet -->
+        <div style="margin-top:24px;">
+            <a href="intranet/login.php" style="display:inline-block;background:rgba(255,255,255,0.12);color:#fff;padding:12px 20px;border-radius:8px;text-decoration:none;border:1px solid rgba(255,255,255,0.18);font-weight:600;">Intranet</a>
+        </div>
+
     </div>
 
     <div class="footer">
